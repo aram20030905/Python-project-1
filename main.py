@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from tkinter.colorchooser import Chooser
+
+
 template = [
     '''
 It was about {number} {time_measure} ago when I arrived at the hospital in a {transportation}. 
@@ -136,6 +139,7 @@ def choose_story():
                 print("This string cannot be empty")
                 continue
 
+
          
             chooseNumber = int(chooseNumber)
             
@@ -148,6 +152,8 @@ def choose_story():
             elif chooseNumber == 3:
                 enchanted_castle_story()
                 check = False
+            elif chooseNumber<0:
+                print("you must enter only positive number")
             else:
                 print("Invalid number. Please choose 1, 2, or 3.")
                 
@@ -155,4 +161,3 @@ def choose_story():
             print("You cannot enter a type other than int.")
    
 choose_story()
-
