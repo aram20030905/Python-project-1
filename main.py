@@ -22,7 +22,7 @@ I hope one day you can visit, although the only way to get here now is {verb_end
 '''
 ]
 
-def get_int_input(prompt, error_message="Invalid input, please enter a valid number:"):
+def get_int_input(prompt, error_message="Invalid input, please enter only number:"):
     while True:
         try:
             return int(input(prompt))
@@ -37,9 +37,7 @@ def get_non_empty_input(prompt, error_message="Input cannot be empty. Please try
         else:
             print(error_message)
 
-
 def hospital_story():
-    
     number = get_int_input("Enter a number: ")
     time_measure = get_non_empty_input("Enter a measure of time (e.g., days, hours): ")
     transportation = get_non_empty_input("Enter a mode of transportation: ")
@@ -59,7 +57,6 @@ def hospital_story():
     silly_word = get_non_empty_input("Enter a silly word: ")
     noun5 = get_non_empty_input("Enter a noun: ")
 
-  
     story = template[0].format(
         number=number, time_measure=time_measure, transportation=transportation, adjective1=adjective1,
         adjective2=adjective2, noun1=noun1, color=color, body_part=body_part, verb=verb, number2=number2,
@@ -69,7 +66,6 @@ def hospital_story():
     print(story)
 
 def camping_story():
-  
     person_name = get_non_empty_input("Enter a person's name: ")
     noun1 = get_non_empty_input("Enter a noun (e.g., stick, map): ")
     feeling1 = get_non_empty_input("Enter an adjective (feeling) for excitement: ")
@@ -88,7 +84,6 @@ def camping_story():
     silly_word = get_non_empty_input("Enter a silly word: ")
     noun2 = get_non_empty_input("Enter a noun (e.g., marshmallow): ")
 
-
     story = template[1].format(
         person_name=person_name, noun1=noun1, feeling1=feeling1, verb1=verb1,
         feeling2=feeling2, animal=animal, verb2=verb2, color=color,
@@ -99,7 +94,6 @@ def camping_story():
     print(story)
 
 def enchanted_castle_story():
-
     person_name = get_non_empty_input("Enter a person's name: ")
     adjective1 = get_non_empty_input("Enter an adjective: ")
     color_animal = get_non_empty_input("Enter a color: ")
@@ -120,6 +114,7 @@ def enchanted_castle_story():
     verb_ending = get_non_empty_input("Enter a verb ending in 'ing': ")
     adjective5 = get_non_empty_input("Enter an adjective: ")
     noun5 = get_non_empty_input("Enter a noun: ")
+
     story = template[2].format(
         person_name=person_name, adjective1=adjective1, color_animal=color_animal,
         animal=animal, place=place, adjective2=adjective2, magical_creature1=magical_creature1,
@@ -130,14 +125,34 @@ def enchanted_castle_story():
     )
     print(story)
 
+def choose_story():
+    check = True
+    while check:
+        try:
+            chooseNumber = input("Enter a template number (1, 2, or 3): ").strip()
+            
+            
+            if not chooseNumber:
+                print("This string cannot be empty")
+                continue
 
-chooseNumber = int(input("Enter a template number (1, 2, or 3): "))
+         
+            chooseNumber = int(chooseNumber)
+            
+            if chooseNumber == 1:
+                hospital_story()
+                check = False
+            elif chooseNumber == 2:
+                camping_story()
+                check = False
+            elif chooseNumber == 3:
+                enchanted_castle_story()
+                check = False
+            else:
+                print("Invalid number. Please choose 1, 2, or 3.")
+                
+        except ValueError:
+            print("You cannot enter a type other than int.")
+   
+choose_story()
 
-if chooseNumber == 1:
-    hospital_story()
-elif chooseNumber == 2:
-    camping_story()
-elif chooseNumber == 3:
-    enchanted_castle_story()
-else:
-    print("Invalid number. Please choose 1, 2, or 3.")
